@@ -1,0 +1,209 @@
+/* ==========================================================================
+   EDGETWIN DESIGN SYSTEM
+   Color Palette strictly:
+   70% Warm Cream (#F7F0DC) & Oat Cream (#EDE2C5)
+   20% Coffee Bean (#3A2418) & Deep Espresso (#24150F)
+   10% Butter Yellow (#F4D35E) & Soft Butter (#FFE89A)
+   Accent/Secondary: Muted Coffee (#806B5A)
+   Zero blue, zero cyan, zero purple.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Core Color Tokens */
+  --warm-cream: #F7F0DC;
+  --oat-cream: #EDE2C5;
+  --oat-cream-light: #FBF7EC;
+  --oat-cream-dark: #DFD3B1;
+  
+  --coffee-bean: #3A2418;
+  --deep-espresso: #24150F;
+  --muted-coffee: #806B5A;
+  --light-coffee: #A89684;
+
+  --butter-yellow: #F4D35E;
+  --soft-butter: #FFE89A;
+  --butter-yellow-muted: rgba(244, 211, 94, 0.18);
+  --butter-yellow-glow: rgba(244, 211, 94, 0.45);
+
+  /* Functional Tokens */
+  --bg-primary: var(--warm-cream);
+  --bg-secondary: var(--oat-cream);
+  --bg-surface: #FAF5E6;
+  --bg-workbench: var(--coffee-bean);
+  --bg-workbench-depth: var(--deep-espresso);
+
+  --text-primary: var(--coffee-bean);
+  --text-secondary: var(--muted-coffee);
+  --text-on-dark: var(--warm-cream);
+  --text-accent: var(--butter-yellow);
+
+  --border-subtle: rgba(58, 36, 24, 0.12);
+  --border-medium: rgba(58, 36, 24, 0.22);
+  --border-dark: rgba(58, 36, 24, 0.5);
+  --border-yellow: rgba(244, 211, 94, 0.6);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(36, 21, 15, 0.06);
+  --shadow-md: 0 8px 24px rgba(36, 21, 15, 0.10);
+  --shadow-lg: 0 16px 40px rgba(36, 21, 15, 0.16);
+  --shadow-workbench: 0 25px 60px rgba(36, 21, 15, 0.35);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 72px;
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--warm-cream);
+  color: var(--coffee-bean);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--warm-cream);
+  color: var(--coffee-bean);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle Technical Grid Background */
+.tech-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(58, 36, 24, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(58, 36, 24, 0.04) 1px, transparent 1px);
+}
+
+/* Typography Classes */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--coffee-bean);
+  letter-spacing: -0.02em;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-coffee);
+  font-weight: 600;
+}
+
+.mono-label-accent {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coffee-bean);
+  background: var(--butter-yellow);
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--coffee-bean);
+  color: var(--warm-cream);
+  border-color: var(--coffee-bean);
+  box-shadow: 0 4px 14px rgba(58, 36, 24, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--butter-yellow);
+  color: var(--coffee-bean);
+  border-color: var(--butter-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(244, 211, 94, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--coffee-bean);
+  border-color: var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--coffee-bean);
+  background-color: rgba(58, 36, 24, 0.05);
+  transform: translateY(-2px);
+}
+
+.btn-accent {
+  background-color: var(--butter-yellow);
+  color: var(--coffee-bean);
+  border-color: var(--butter-yellow);
+}
+
+.btn-accent:hover {
+  background-color: var(--soft-butter);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--butter-yellow-glow);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Technical Badges & Dividers */
+.tech-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-medium), transparent);
+  width: 100%;
+  margin: 60px 0;
+}

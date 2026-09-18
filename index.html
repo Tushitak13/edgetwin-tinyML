@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDGETWIN // A Sim-to-Real Trust Layer for TinyML</title>
+  <meta name="description" content="EdgeTwin connects physical sensor data with the digital world to detect when real-world conditions move beyond the environment where an AI model was validated.">
+  
+  <!-- Design System & Component Stylesheets -->
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Subtle Technical Grid Overlay -->
+  <div class="tech-grid-overlay" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       1. TOP NAVIGATION
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-wrapper" id="navBrand">
+        <span class="brand-logo">EDGETWIN</span>
+        <span class="brand-tag">SIM-TO-REAL TRUST LAYER</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#how-it-works" class="nav-link" id="navLinkHow">HOW IT WORKS</a></li>
+          <li><a href="#technology" class="nav-link" id="navLinkTech">TECHNOLOGY</a></li>
+          <li><a href="#simulator" class="nav-link" id="navLinkDemo">DEMO</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn btn-primary nav-btn trigger-enter-twin" id="topEnterTwinBtn">
+          ENTER THE TWIN &rarr;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         2. MAIN HERO SECTION
+         ========================================================================= -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        
+        <!-- Technical Breadcrumb / Pill -->
+        <div class="hero-editorial-badge">
+          <span class="badge-dot pulse"></span>
+          <span class="mono-label">SYSTEM REVISION // ET-TINYML-01 &bull; HARDWARE PROTOTYPE</span>
+        </div>
+
+        <!-- Large Headlines -->
+        <h1 class="hero-title-main" id="mainHeroTitle">EDGETWIN</h1>
+        <div class="hero-subtitle-strong" id="mainSubTitle">
+          A SIM-TO-REAL TRUST LAYER FOR TINYML
+        </div>
+
+        <!-- Short Description & Supporting Copy -->
+        <p class="hero-lead-quote" id="heroLeadQuote">
+          &ldquo;Know when your edge AI can still be trusted.&rdquo;
+        </p>
+        <p class="hero-supporting-copy" id="heroSupportingCopy">
+          EdgeTwin connects physical sensor data with the digital world to detect when real-world conditions move beyond the environment where an AI model was validated.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-cta-group">
+          <button class="btn btn-primary trigger-enter-twin" id="heroPrimaryCta">
+            ENTER THE TWIN &rarr;
+          </button>
+          <a href="#how-it-works" class="btn btn-secondary" id="heroSecondaryCta">
+            EXPLORE HOW IT WORKS
+          </a>
+        </div>
+
+        <!-- =======================================================================
+             3. HARDWARE VISUALIZATION & WORKBENCH STAGE
+             ======================================================================= -->
+        <div class="hardware-stage-wrapper" id="hardwareStageWrapper">
+          
+          <!-- Stage Status Bar -->
+          <div class="stage-status-bar">
+            <div class="stage-telemetry-status">
+              <div class="system-status-indicator" id="systemStatusPill">
+                <span class="status-dot-active"></span>
+                <span>INITIALIZING SENSORS...</span>
+              </div>
+              <span class="mono-label stage-statement-tag" id="stageStatementTag">PHYSICAL BENCHMARK // LAB 04</span>
+            </div>
+
+            <div class="stage-tools">
+              <button class="tool-btn" id="replayDropBtn" title="Rerun physical hardware drop-in animation">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="1 4 1 10 7 10"></polyline>
+                  <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                </svg>
+                REPLAY HARDWARE DROP
+              </button>
+            </div>
+          </div>
+
+          <!-- Stage Interactive Canvas & Physics Area -->
+          <div class="stage-canvas-container" id="hardwareStage">
+            
+            <!-- Canvas 1: Technical Measurement & Dimension Grid -->
+            <canvas class="stage-grid-canvas" id="gridCanvas"></canvas>
+
+            <!-- Canvas 2: Digital Twin Isometric Projection (Layer 8) -->
+            <canvas class="digital-twin-canvas" id="twinCanvas"></canvas>
+
+            <!-- Canvas 3: Butter Yellow Telemetry Data Pulses (Layer 6) -->
+            <canvas class="data-pulse-canvas" id="pulseCanvas"></canvas>
+
+            <!-- Layer 4: Interactive Hardware Components & Ground Shadows -->
+            <div class="hardware-physics-layer" id="physicsLayer"></div>
+
+            <!-- Workbench / Physical World Platform -->
+            <div class="physical-workbench" id="workbenchPlatform">
+              <div class="workbench-surface-line"></div>
+              
+              <div class="workbench-markings">
+                <span class="workbench-label">
+                  <span style="display:inline-block; width:6px; height:6px; background:var(--butter-yellow); border-radius:1px;"></span>
+                  THE PHYSICAL WORLD // PROTOTYPE BENCH
+                </span>
+                <span>AXIS REF: 100Hz HARDWARE HARMONICS</span>
+                <span class="workbench-indicator-tag">COFFEE BEAN DATUM SURFACE</span>
+              </div>
+
+              <div class="workbench-ruler"></div>
+
+              <div class="workbench-specs-footer">
+                <span>CHASSIS GROUND: COUPLED</span>
+                <span>VOLTAGE: +12.0V BUS / 3.3V LOGIC</span>
+                <span>MODEL RUNTIME: TFLITE-MICRO</span>
+              </div>
+            </div>
+
+            <!-- Active Digital Twin Telemetry HUD Box -->
+            <div class="twin-hud-overlay" id="twinHud">
+              <div class="twin-hud-header">
+                <span class="twin-hud-title">DIGITAL TWIN // KINEMATIC</span>
+                <span class="mono-label-accent">SYNC</span>
+              </div>
+              <div class="twin-hud-metric">
+                <span class="twin-hud-label">Trust Metric:</span>
+                <span class="twin-hud-value highlight">98.4% CERTIFIED</span>
+              </div>
+              <div class="twin-hud-metric">
+                <span class="twin-hud-label">Sim Drift (&Delta;):</span>
+                <span class="twin-hud-value">0.014 OOD RES</span>
+              </div>
+              <div class="twin-hud-metric">
+                <span class="twin-hud-label">TinyML Infer:</span>
+                <span class="twin-hud-value">3.8 ms / cycle</span>
+              </div>
+              <div class="twin-hud-metric">
+                <span class="twin-hud-label">Sim Boundary:</span>
+                <span class="twin-hud-value" style="color:var(--butter-yellow);">IN-DISTRIBUTION</span>
+              </div>
+            </div>
+
+            <!-- Hover Spec Tooltip Card -->
+            <div class="component-tooltip-card" id="componentTooltip"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. VISUAL STORY & PIPELINE SECTION: PHYSICAL TO TRUST
+         ========================================================================= -->
+    <section class="architecture-section" id="how-it-works">
+      <div class="container">
+        
+        <div class="section-header-editorial">
+          <div class="section-tag">
+            <span class="feature-bullet" style="background:var(--coffee-bean);"></span>
+            <span>END-TO-END VALIDATION PIPELINE</span>
+          </div>
+          <h2 class="section-heading-lg">
+            From Raw Mechanical Friction to Real-Time Algorithmic Certainty.
+          </h2>
+        </div>
+
+        <div class="pipeline-flow-grid">
+          
+          <div class="pipeline-step-card">
+            <span class="step-num">01 // SOURCE</span>
+            <h3 class="step-title">Physical Hardware</h3>
+            <p class="step-desc">
+              DC motors, bearings, and power MOSFETs operating in harsh physical environments subject to thermal degradation, load resistance, and mechanical vibration.
+            </p>
+            <div class="step-accent-bar"></div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <span class="step-num">02 // TELEMETRY</span>
+            <h3 class="step-title">Sensor Data</h3>
+            <p class="step-desc">
+              Micro-second sampled current (ACS712), 6-axis inertial motion (MPU6050), and ambient atmospheric conditions (DHT22) stream directly into the MCU bus.
+            </p>
+            <div class="step-accent-bar"></div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <span class="step-num">03 // INFERENCE</span>
+            <h3 class="step-title">Edge AI</h3>
+            <p class="step-desc">
+              TensorFlow Lite Micro neural weights running deterministically within 520KB of ESP32 SRAM, processing local vibration spectrograms in under 4ms.
+            </p>
+            <div class="step-accent-bar"></div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <span class="step-num">04 // VALIDATION</span>
+            <h3 class="step-title">Digital Twin</h3>
+            <p class="step-desc">
+              A synchronized kinematic replica evaluates real-time state vectors against high-dimensional simulation boundaries generated during lab CAD training.
+            </p>
+            <div class="step-accent-bar"></div>
+          </div>
+
+          <div class="pipeline-step-card">
+            <span class="step-num">05 // OUTCOME</span>
+            <h3 class="step-title">Trust</h3>
+            <p class="step-desc">
+              Continuous trust scoring quantifies out-of-distribution drift. If real conditions violate simulation assumptions, failsafe actuation trips before failure occurs.
+            </p>
+            <div class="step-accent-bar"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. VISUAL METAPHOR: TWO WORLDS
+         ========================================================================= -->
+    <section class="metaphor-section" id="technology">
+      <div class="container">
+        
+        <div class="section-header-editorial">
+          <div class="section-tag">
+            <span class="feature-bullet" style="background:var(--coffee-bean);"></span>
+            <span>DUAL REALITY ARCHITECTURE</span>
+          </div>
+          <h2 class="section-heading-lg">
+            Bridging Two Distinct Realities on a Single Silicon Chip.
+          </h2>
+        </div>
+
+        <div class="two-worlds-grid">
+          
+          <!-- Connection Badge -->
+          <div class="worlds-connection-spine">&harr;</div>
+
+          <!-- Physical World Card -->
+          <div class="world-card physical">
+            <div class="mono-label" style="color: var(--oat-cream); margin-bottom: 10px;">
+              [CHASSIS DOMAIN // SOLID HARDWARE]
+            </div>
+            <h3>The Physical World</h3>
+            <p>
+              Ground truth reality is chaotic, noisy, and subject to physical entropy. Wear on brushed commutators, thermal runaway, and unexpected load spikes cause edge models to hallucinate.
+            </p>
+            <ul class="world-features-list">
+              <li><span class="feature-bullet"></span> Industrial DC Motor & High-Torque Gearbox</li>
+              <li><span class="feature-bullet"></span> Dual H-Bridge Solid-State Power Drivers</li>
+              <li><span class="feature-bullet"></span> Analog Current Shunts & Hall Effect Transducers</li>
+              <li><span class="feature-bullet"></span> High-G Piezoelectric Vibration & Micro-Shock</li>
+              <li><span class="feature-bullet"></span> Material Wear, Dust, & Voltage Fluctuations</li>
+            </ul>
+          </div>
+
+          <!-- Digital World Card -->
+          <div class="world-card digital">
+            <div class="mono-label" style="color: var(--muted-coffee); margin-bottom: 10px;">
+              [SIMULATION DOMAIN // EDGE TWIN]
+            </div>
+            <h3>The Digital World</h3>
+            <p>
+              Constructed from fine mathematical lines, synthetic physics simulation priors, and high-dimensional manifold envelopes. It continuously interrogates whether sensor inputs conform to certified training space.
+            </p>
+            <ul class="world-features-list">
+              <li><span class="feature-bullet"></span> Sim-to-Real Convex Boundary Verification</li>
+              <li><span class="feature-bullet"></span> Real-Time Mahalanobis Distance Estimation</li>
+              <li><span class="feature-bullet"></span> Butter Yellow Telemetry Particle Flow</li>
+              <li><span class="feature-bullet"></span> Sub-4ms Out-of-Distribution Trip Latency</li>
+              <li><span class="feature-bullet"></span> Deterministic Zero-Cloud Edge Autonomy</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. INTERACTIVE SIM-TO-REAL TRUST SIMULATOR (DEMO)
+         ========================================================================= -->
+    <section class="sim-to-real-section" id="simulator">
+      <div class="container">
+        
+        <div class="section-header-editorial">
+          <div class="section-tag">
+            <span class="feature-bullet" style="background:var(--coffee-bean);"></span>
+            <span>INTERACTIVE EXPERIMENTAL BENCH</span>
+          </div>
+          <h2 class="section-heading-lg">
+            Simulate Real-World Stress & Observe Edge AI Trust Decay.
+          </h2>
+          <p style="color: var(--muted-coffee); margin-top: 10px; max-width: 720px;">
+            Adjust mechanical and thermal stress parameters below. Watch how EdgeTwin calculates real-time divergence when physical reality strays outside simulated training bounds.
+          </p>
+        </div>
+
+        <div class="simulator-chassis">
+          
+          <div class="simulator-header">
+            <div class="simulator-title">
+              <span style="display:inline-block; width:8px; height:8px; background:var(--butter-yellow); border-radius:50%;"></span>
+              <span>SIM-TO-REAL BOUNDARY STRESS CHAMBER // MCU HARDWARE-IN-THE-LOOP</span>
+            </div>
+            <span class="mono-label" style="color:var(--oat-cream);">TFLITE-MICRO RUNTIME</span>
+          </div>
+
+          <div class="simulator-body">
+            
+            <!-- Controls Pane -->
+            <div class="sim-controls-pane">
+              
+              <!-- Slider 1: Current -->
+              <div class="control-group">
+                <div class="control-label-row">
+                  <span>MOTOR CURRENT DRAW (ACS712)</span>
+                  <span class="control-val" id="valCurrent">1.2 A</span>
+                </div>
+                <input type="range" class="stress-slider" id="stressCurrent" min="0.2" max="4.8" step="0.1" value="1.2" aria-label="Motor Current Draw">
+                <span class="mono-label" style="font-size:0.68rem;">TRAINED NOMINAL: 1.0A &ndash; 1.8A</span>
+              </div>
+
+              <!-- Slider 2: Temperature -->
+              <div class="control-group">
+                <div class="control-label-row">
+                  <span>AMBIENT THERMAL DRIFT (DHT22)</span>
+                  <span class="control-val" id="valTemp">+25 °C</span>
+                </div>
+                <input type="range" class="stress-slider" id="stressTemp" min="-10" max="65" step="1" value="25" aria-label="Thermal Drift">
+                <span class="mono-label" style="font-size:0.68rem;">TRAINED NOMINAL: +15°C &ndash; +35°C</span>
+              </div>
+
+              <!-- Slider 3: Vibration Harmonics -->
+              <div class="control-group">
+                <div class="control-label-row">
+                  <span>MECHANICAL VIBRATION (MPU6050)</span>
+                  <span class="control-val" id="valVib">0.18 g</span>
+                </div>
+                <input type="range" class="stress-slider" id="stressVib" min="0.05" max="3.8" step="0.05" value="0.18" aria-label="Mechanical Vibration">
+                <span class="mono-label" style="font-size:0.68rem;">TRAINED NOMINAL: &lt; 0.45g RMS</span>
+              </div>
+
+            </div>
+
+            <!-- Readout Pane -->
+            <div class="sim-readout-pane">
+              <div>
+                <div class="trust-gauge-box">
+                  <div class="trust-score-label">SIM-TO-REAL TRUST INDEX</div>
+                  <div class="trust-score-number" id="trustScoreNum">98.4%</div>
+                  <div class="mono-label">OOD CONFIDENCE PROBABILITY</div>
+                </div>
+
+                <div class="sim-state-banner state-safe" id="simStateBanner">
+                  ● 100% CERTIFIED // WITHIN SIMULATION BOUNDS
+                </div>
+              </div>
+
+              <!-- Live Discrepancy Canvas -->
+              <div class="discrepancy-graph-wrapper">
+                <div style="display:flex; justify-content:space-between; margin-bottom:4px;" class="mono-label">
+                  <span>DRIFT RESIDUAL &Delta;(t)</span>
+                  <span>100Hz TELEMETRY</span>
+                </div>
+                <canvas id="trustCanvas"></canvas>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. HARDWARE BILL OF MATERIALS & SPECIFICATIONS
+         ========================================================================= -->
+    <section class="specs-section">
+      <div class="container">
+        
+        <div class="section-header-editorial">
+          <div class="section-tag">
+            <span class="feature-bullet" style="background:var(--coffee-bean);"></span>
+            <span>SYSTEM ARCHITECTURE & HARDWARE SPECIFICATIONS</span>
+          </div>
+          <h2 class="section-heading-lg">
+            Certified Bill of Materials for Real-World Validation.
+          </h2>
+        </div>
+
+        <div class="specs-table-wrapper">
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Physical Role</th>
+                <th>Telemetry Protocol</th>
+                <th>TinyML Verification Vector</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>ESP32 DevKit v1</strong></td>
+                <td>Edge Microcontroller & TinyML Runtime</td>
+                <td><span class="spec-chip">Dual-Core 240MHz</span></td>
+                <td>TensorFlow Lite Micro (520KB SRAM footprint)</td>
+              </tr>
+              <tr>
+                <td><strong>MPU6050</strong></td>
+                <td>6-DoF Gyroscope & Accelerometer</td>
+                <td><span class="spec-chip">I2C @ 400kHz</span></td>
+                <td>Rotational harmonic variance & bearing micro-chatter</td>
+              </tr>
+              <tr>
+                <td><strong>DHT22 (AM2302)</strong></td>
+                <td>Environmental Temperature & Humidity</td>
+                <td><span class="spec-chip">1-Wire Digital</span></td>
+                <td>Thermal boundary drift & condensation envelope</td>
+              </tr>
+              <tr>
+                <td><strong>ACS712-20A</strong></td>
+                <td>Hall-Effect Motor Current Sensor</td>
+                <td><span class="spec-chip">ADC 100mV/A</span></td>
+                <td>Rotor stall detection & mechanical overload surge</td>
+              </tr>
+              <tr>
+                <td><strong>L298N Driver & DC Motor</strong></td>
+                <td>Dual H-Bridge Driver + 12V Dynamometer</td>
+                <td><span class="spec-chip">PWM Drive</span></td>
+                <td>Load disturbance injection & torque response</td>
+              </tr>
+              <tr>
+                <td><strong>0.96" SSD1306 OLED</strong></td>
+                <td>On-Device Telemetry Visualizer</td>
+                <td><span class="spec-chip">I2C 128x64</span></td>
+                <td>Real-time Trust score & hardware-in-the-loop status</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. PRIMARY CTA SECTION
+         ========================================================================= -->
+    <section class="cta-banner-section">
+      <div class="container">
+        <div class="cta-statement-box">
+          <h2 class="cta-heading">Ready to Secure Your Edge Intelligence?</h2>
+          <p class="cta-subtext">
+            Do not let your TinyML models operate blindly outside validated reality. EdgeTwin provides deterministic, mathematical trust boundaries right at the microcontroller edge.
+          </p>
+          <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+            <button class="btn btn-accent trigger-enter-twin" id="footerEnterTwinBtn">
+              ENTER THE TWIN &rarr;
+            </button>
+            <a href="#simulator" class="btn btn-secondary" style="color:var(--warm-cream); border-color:rgba(247, 240, 220, 0.4);">
+              RUN STRESS SIMULATION
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       9. ENGINEERING MANIFEST MODAL (ENTER THE TWIN ACTION)
+       ========================================================================= -->
+  <div class="modal-overlay" id="twinAccessModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="manifest-modal-card">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close dialog">&times;</button>
+      
+      <div class="modal-header-tag">
+        <span class="mono-label-accent">CONNECTED</span>
+        <span class="mono-label">SYSTEM MANIFEST // SECURE PHYSICAL LINK</span>
+      </div>
+
+      <h3 class="modal-title" id="modalTitle">EdgeTwin Hardware Link Established</h3>
+      <p class="modal-description">
+        You are connected to the live Sim-to-Real Trust Layer. Sensor telemetry from the ESP32 physical prototype is actively evaluating real-world boundary invariants against the certified digital twin model.
+      </p>
+
+      <div class="manifest-spec-grid">
+        <div class="manifest-spec-item">
+          <span class="manifest-spec-key">HARDWARE TARGET:</span>
+          <span class="manifest-spec-val">ESP32 Xtensa Dual-Core @ 240MHz</span>
+        </div>
+        <div class="manifest-spec-item">
+          <span class="manifest-spec-key">VERIFICATION LOOP:</span>
+          <span class="manifest-spec-val">100Hz Hardware-in-the-Loop</span>
+        </div>
+        <div class="manifest-spec-item">
+          <span class="manifest-spec-key">OOD BOUNDARY ALGORITHM:</span>
+          <span class="manifest-spec-val">Convex Hull Mahalanobis Residue</span>
+        </div>
+        <div class="manifest-spec-item">
+          <span class="manifest-spec-key">STATUS:</span>
+          <span class="manifest-spec-val" style="color: var(--coffee-bean); font-weight: 700;">● PHYSICAL SYSTEM ONLINE</span>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 12px;">
+        <button class="btn btn-primary" onclick="document.getElementById('twinAccessModal').classList.remove('active');">
+          RETURN TO BENCH
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       10. FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <div class="footer-brand">EDGETWIN</div>
+          <div class="mono-label" style="color:var(--muted-coffee); margin-top:4px;">
+            A SIM-TO-REAL TRUST LAYER FOR TINYML
+          </div>
+        </div>
+        <div class="footer-manifesto">
+          Engineered for autonomous robotics, edge sensing, and safety-critical embedded systems where silent AI failure is not an option.
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 EDGETWIN ARCHITECTURE &bull; ALL HARDWARE SCHEMATICS OPEN SPEC</span>
+        <span>VERSION: ET-CORE-v1.0.4 &bull; ESP32-TFLITE-READY</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Models, Physics, Pulses, Twin & Application Controller -->
+  <script src="js/hardware-models.js"></script>
+  <script src="js/physics-stage.js"></script>
+  <script src="js/data-pulses.js"></script>
+  <script src="js/digital-twin.js"></script>
+  <script src="js/trust-simulator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

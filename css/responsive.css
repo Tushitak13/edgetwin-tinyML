@@ -1,0 +1,130 @@
+/* ==========================================================================
+   EDGETWIN RESPONSIVE STYLESHEET
+   Ensures technical editorial feel across mobile, tablet, and widescreen.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-title-main {
+    font-size: 3.8rem;
+  }
+
+  .stage-canvas-container {
+    height: 540px;
+  }
+
+  .two-worlds-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .worlds-connection-spine {
+    display: none;
+  }
+
+  .pipeline-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pipeline-step-card:last-child {
+    grid-column: span 2;
+  }
+
+  .simulator-body {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero-section {
+    padding-top: 24px;
+    padding-bottom: 16px;
+  }
+
+  .hero-title-main {
+    font-size: 2.8rem;
+  }
+
+  .hero-lead-quote {
+    font-size: 1.25rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+  }
+
+  .stage-canvas-container {
+    height: 480px;
+  }
+
+  .physical-workbench {
+    height: 110px;
+    padding: 8px 16px;
+  }
+
+  .pipeline-flow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pipeline-step-card:last-child {
+    grid-column: auto;
+  }
+
+  .twin-hud-overlay {
+    top: 10px;
+    right: 10px;
+    max-width: 220px;
+    padding: 10px 12px;
+    font-size: 0.7rem;
+  }
+
+  .stage-status-bar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .stage-tools {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .cta-statement-box {
+    padding: 28px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 1360px;
+  }
+
+  .stage-canvas-container {
+    height: 640px;
+  }
+}

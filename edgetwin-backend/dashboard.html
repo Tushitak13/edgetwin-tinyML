@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EdgeTwin Dashboard</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; background:#0f1115; color:#e6e6e6; margin:0; padding:24px; }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .sub { color:#9aa0a6; margin-bottom: 24px; }
+  .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:16px; margin-bottom:24px; }
+  .card { background:#1b1e24; border-radius:12px; padding:16px; border:1px solid #2a2e37; }
+  .card h3 { margin:0 0 8px 0; font-size:13px; color:#9aa0a6; text-transform:uppercase; letter-spacing:.05em; }
+  .big { font-size:32px; font-weight:700; }
+  .TRUST { color:#3ddc84; }
+  .CAUTION { color:#ffb020; }
+  .UNKNOWN { color:#ff4d4f; }
+  table { width:100%; border-collapse: collapse; font-size:13px; }
+  th, td { text-align:left; padding:6px 8px; border-bottom:1px solid #2a2e37; }
+  th { color:#9aa0a6; font-weight:500; }
+  .pill { padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; }
+  .pill.TRUST { background:#123321; }
+  .pill.CAUTION { background:#3a2a05; }
+  .pill.UNKNOWN { background:#3a1113; }
+</style>
+</head>
+<body>
+  <h1>EdgeTwin — Reality Gap Dashboard</h1>
+  <div class="sub">Polling <code id="base"></code> every 2s</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Prediction</h3>
+      <div class="big" id="pred">—</div>
+      <div id="conf" style="color:#9aa0a6;"></div>
+    </div>
+    <div class="card">
+      <h3>Reality Gap Index</h3>
+      <div class="big" id="rgi">—</div>
+    </div>
+    <div class="card">
+      <h3>Trust State</h3>
+      <div class="big" id="trust">—</div>
+      <div id="action" style="color:#9aa0a6;"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Recent readings</h3>
+    <table>
+      <thead><tr><th>Time</th><th>Pred</th><th>Conf</th><th>RGI</th><th>Trust</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+<script>
+const BASE_URL = "http://localhost:8000";
+document.getElementById("base").textContent = BASE_URL;
+
+async function poll() {
+  try {
+    const statusResp = await fetch(BASE_URL + "/api/status");
+    const status = await statusResp.json();
+
+    if (status.status === "ok") {
+      const r = status.latest;
+      document.getElementById("pred").textContent = r.prediction_label;
+      document.getElementById("conf").textContent = "confidence " + (r.prediction_confidence*100).toFixed(0) + "%";
+      document.getElementById("rgi").textContent = r.reality_gap_index.toFixed(1);
+      const trustEl = document.getElementById("trust");
+      trustEl.textContent = r.trust_state;
+      trustEl.className = "big " + r.trust_state;
+      document.getElementById("action").textContent = r.recommended_action;
+    }
+
+    const histResp = await fetch(BASE_URL + "/api/history?limit=15");
+    const hist = await histResp.json();
+    const rows = hist.readings.slice().reverse().map(r => `
+      <tr>
+        <td>${new Date(r.timestamp*1000).toLocaleTimeString()}</td>
+        <td>${r.prediction_label}</td>
+        <td>${(r.prediction_confidence*100).toFixed(0)}%</td>
+        <td>${r.reality_gap_index.toFixed(1)}</td>
+        <td><span class="pill ${r.trust_state}">${r.trust_state}</span></td>
+      </tr>`).join("");
+    document.getElementById("rows").innerHTML = rows;
+  } catch (e) {
+    console.error("EdgeTwin dashboard: could not reach backend", e);
+  }
+}
+
+poll();
+setInterval(poll, 2000);
+</script>
+</body>
+</html>

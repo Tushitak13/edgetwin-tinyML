@@ -1,0 +1,8 @@
+venv/
+venv-training/
+__pycache__/
+*.pyc
+*.db
+*.h5
+*.tflite
+*.csv
